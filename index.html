@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html class="page" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adaptiveHeader</title>
+    <link rel="stylesheet" href="index.min.css">
+</head>
+<body class="page__body">
+    <header class="header">
+        <div class="logo header__logo">
+            <img src="images/logo.svg" width="40" height="44" alt="" class="logo__image">
+                <p class="logo__tittle">Веб стандарты</p>
+                <p class="logo__tagline">Сообщество разработчиков</p>
+        </div>
+        <nav class="menu header__menu">
+            <button class="menu__button menu__button--open" type="button" aria-expanded="false" aria-controls="menu__list">
+                <svg class="menu__icon" aria-hidden="true" width="32" height="32">
+                    <use class="menu__icon--menu" href="images/sprite.svg#menu"></use>
+                    <use class="menu__icon--cross" href="images/sprite.svg#cross"></use>
+                </svg>
+            </button>
+            <ul class="menu__list menu__list--open" id='menu__list'>
+                <li class="menu__item">
+                    <a href="" class="menu__link menu__link--current">Статьи</a>
+                    <a class="menu__link menu__link--inactive">Подкаст</a>
+                    <a  class="menu__link menu__link--inactive">Календарь</a>
+                    <a  class="menu__link menu__link--inactive">О проекте</a>
+                    <a href="" class="menu__link menu__link--patrion">Поддержать</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <script>
+       ( ()=>{
+            const menuButton = document.querySelector('.menu__button');
+            const menuList = document.querySelector('.menu__list');
+
+            menuButton/addEventListener('click', ()=> {
+                let expanded = menuButton.getAttribute('aria-expended') === 'true' || 'false'
+                menuButton.setAttribute('aria-expanded', !expanded);
+                menuButton.classList.toggle('menu__button--open');
+                menuList.classList.toggle('menu__list--open');
+            })
+        })()
+    </script>
+</body>
+</html>

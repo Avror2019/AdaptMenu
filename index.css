@@ -1,0 +1,202 @@
+/* для того чтобы работало на всех браузерах прописываем
+npm i postcss-cli postcss-import postcss-media-minmax postcss-csso  - установка плагинов
+npx postcss index.css --use postcss-import --use postcss-media-minmax --us postcss-csso --no-max --output index.min.css - сжатие и полифил для других браузеров чтобы работало медиа >= либо <
+ */
+
+.page{
+    line-height: 1.5;
+}
+
+.page__body{
+    margin: 0;
+}
+
+.logo{
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: 8px;
+    line-height: 1;
+}
+
+.logo__tittle{
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: -0.03em;
+
+}
+.logo__tagline{
+    margin: 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.logo__image{
+    width: 4opx;
+    height: 44px;
+}
+
+.header{
+    padding-top: 16px;
+    padding-bottom: 16px;
+    display: grid;
+}
+
+
+
+
+.menu__list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 12px;
+}
+
+.menu__item{
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.menu__link{
+    color: darkblue
+}
+
+.menu__link--inactive{
+    color: darkcyan;
+}
+
+.menu__link--current{
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+.menu__link--patrion{
+    padding-left: 18px;
+}
+
+.menu__link--patrion::before{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    margin-left: -18px;
+    margin-top: 2px;
+    content: url(images/patreon.svg) ;
+}
+
+
+@media(width<=736px) {
+    .logo__tagline{
+        display: none;
+    }
+
+    .logo__tittle{
+        align-self: center;
+    }
+
+    .menu__list{
+        display: none;
+        row-gap: 8px;
+        padding-top: 12px;
+        padding-bottom: 24px;
+        padding-left: 64px;
+        background-color: wheat;
+        box-shadow: 0 50vh 0 50vh seashell;
+    }
+    .menu__list--open{
+        display: grid;
+        row-gap: 8px;
+    }
+    .menu__link--patrion{
+        margin-left: -18px;
+    }
+    .menu__item{
+    display: grid;
+
+    }
+    .header__logo{
+        z-index: 1;
+    }
+
+
+    .menu__button{
+        display: block;
+        margin: 0;
+        padding: 0;
+        border: none;
+        background-color: transparent;
+        justify-self: end;
+        z-index: 1;
+        margin-top: 24px;
+        margin-right: 16px;
+    }
+
+    .menu__icon{
+        stroke: black;
+    }
+
+    .menu__icon--menu,
+    .menu__button--open .menu__icon--cross{
+        display: block;
+    }
+    .menu__icon--cross,
+    .menu__button--open .menu__icon--menu{
+        display: none;
+    }
+    .menu{
+        display: grid;
+
+    }
+
+    .header__menu{
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+
+    .menu__icon:hover{
+    stroke: aqua;
+    }
+
+    .header{
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+
+@media(width>736px){
+    .logo__image{
+        grid-row: span 2;
+    }
+
+    .logo__tittle{
+        align-self: end;
+    }
+
+    .logo__tagline{
+        align-self: center;
+    }
+    .menu__button{
+        display: none;
+    }
+
+    .menu__item{
+        display: grid;
+        grid-auto-flow: column;
+        column-gap: 8px;
+    }
+
+    .header{
+        padding-left: 24px;
+        grid-template-columns: max-content max-content ;
+        padding-right: 24px;
+        justify-content: space-between;
+    }
+
+    .header__menu{
+        align-self: center;
+    }
+}
